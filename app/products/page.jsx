@@ -9,11 +9,11 @@ const getProducts = async () => {
   return res.json();
 };
 
-const page = async () => {
+const ProductsList = async () => {
   const products = await getProducts();
 
   return (
-    <section>
+    <section className="mt-20">
       <h1 className="text-xl font-semibold my-4">All products</h1>
       <div className="grid justify-items-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-8 gap-y-14">
         {products.map((product) => (
@@ -24,4 +24,4 @@ const page = async () => {
   );
 };
 
-export default page;
+export default ProductsList;

@@ -2,9 +2,8 @@
 import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema({
-    name: {
+    username: {
         type: String,
-        unique: true,
         required: true,
     },
     email: {
@@ -12,15 +11,10 @@ const userSchema = new mongoose.Schema({
         unique: true,
         required: true,
     },
-    password: {
+    image: {
         type: String,
-        required: true,
     },
-    date: {
-        type: Date,
-        default: Date.now,
-    },
-});
+}, { timestamps: true });
 
 export default mongoose.models.User || mongoose.model("User", userSchema, "users")
 

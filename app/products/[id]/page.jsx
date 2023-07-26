@@ -9,8 +9,8 @@ const ProductDetails = async ({ params }) => {
   }
 
   return (
-    <section className="h-screen flex justify-center items-center">
-      <div className="flex gap-4 shadow-lg w-full md:w-3/4 lg:w-3/5">
+    <section className="min-h-screen flex justify-center items-center">
+      <div className="flex flex-col md:flex-row gap-4 shadow-lg w-full sm:w-3/5 md:w-3/4 lg:w-3/5 my-20">
         <Image
           src={product.image}
           alt="Product image"
@@ -43,7 +43,9 @@ const ProductDetails = async ({ params }) => {
               {product.delivery_time} days
             </p>
           </div>
-          <button className="btn_primary mt-6 py-2 px-6">Add to cart</button>
+          <button className="btn_primary mt-6 py-2 px-6 w-full ">
+            Add to cart
+          </button>
         </div>
       </div>
     </section>

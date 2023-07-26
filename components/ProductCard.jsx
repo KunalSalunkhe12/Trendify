@@ -16,11 +16,11 @@ const ProductCard = ({ product }) => {
         />
         <div className="p-2">
           <h3 className="font-semibold">{product.title}</h3>
-          <div className="flex justify-between my-2">
+          <div className="flex justify-between my-1">
             <p className="flex items-center">
               <AiFillStar className="text-secondary" /> {product.rating}
             </p>
-            <p>₹{product.price}</p>
+            <p className="font-medium">₹{product.price}</p>
           </div>
         </div>
       </Link>

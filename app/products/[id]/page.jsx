@@ -1,16 +1,12 @@
 import Image from "next/image";
-
-const getProduct = async (id) => {
-  const res = await fetch(`http://localhost:3000/api/products/${id}`);
-
-  if (!res.ok) {
-    throw new Error("Failed to fetch data");
-  }
-  return res.json();
-};
+import { getProductById } from "@/utils/products";
 
 const ProductDetails = async ({ params }) => {
-  const product = await getProduct(params.id);
+  const product = await getProductById(params.id);
+
+  if (product.error) {
+    throw new Error(product.error);
+  }
 
   return (
     <section className="h-screen flex justify-center items-center">

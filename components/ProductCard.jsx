@@ -6,14 +6,15 @@ const ProductCard = ({ product }) => {
   return (
     <div className="rounded-md shadow-lg">
       <Link href={`/products/${product?._id}`}>
-        <Image
-          className="w-full object-contain"
-          src={product?.image}
-          width={250}
-          height={250}
-          quality={100}
-          alt="product image"
-        />
+        <div className="w-[15rem] h-[18rem] relative -z-10">
+          <Image
+            className="object-cover"
+            src={product?.image}
+            fill
+            quality={100}
+            alt="product image"
+          />
+        </div>
         <div className="p-2">
           <h3 className="font-semibold">{product.title}</h3>
           <div className="flex justify-between my-1">

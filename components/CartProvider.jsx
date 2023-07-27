@@ -8,7 +8,8 @@ export const CartContext = createContext(null);
 
 const CartProvider = ({ children }) => {
   const initialData = { products: {} };
-  const localData = localStorage.getItem("cart");
+  const isClient = typeof window !== "undefined"; // Check if we are on the client side
+  const localData = isClient ? localStorage.getItem("cart") : null;
   const initialSate = localData ? JSON.parse(localData) : initialData;
 
   const [state, dispatch] = useReducer(cartReducer, initialSate);

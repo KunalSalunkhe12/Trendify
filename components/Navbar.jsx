@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { BsFillCartFill } from "react-icons/bs";
-import Auth from "@/components/Auth";
+import NavAuth from "@/components/NavAuth";
 
 const Navbar = () => {
   return (
@@ -8,18 +8,11 @@ const Navbar = () => {
       <Link href="/" className="text-2xl font-bold">
         Trendify
       </Link>
-      <ul className="flex items-center justify-center gap-2 md:gap-4 font-medium">
+      <ul className="flex items-center justify-center gap-4 md:gap-4 font-medium">
         <li className="p-1">
           <Link href="/products">Explore</Link>
         </li>
-        <li className="py-1 ">
-          <Auth />
-        </li>
-        <li className="p-1">
-          <Link href="cart">
-            <BsFillCartFill size={20} />
-          </Link>
-        </li>
+        <NavAuth />
       </ul>
     </nav>
   );

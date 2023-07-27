@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { AiFillStar } from "react-icons/ai";
+import CartButton from "./CartButton";
 
 const ProductCard = ({ product }) => {
   return (
@@ -12,20 +13,24 @@ const ProductCard = ({ product }) => {
             src={product?.image}
             fill
             quality={100}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             alt="product image"
           />
         </div>
         <div className="p-2">
           <h3 className="font-semibold">{product.title}</h3>
-          <div className="flex justify-between my-1">
+          <div className="flex justify-between my-2">
             <p className="flex items-center">
               <AiFillStar className="text-secondary" /> {product.rating}
             </p>
             <p className="font-medium">₹{product.price}</p>
           </div>
+          <p>
+            <span className="text-sm font-medium">Category: </span>
+            {product.category}
+          </p>
         </div>
       </Link>
-      <button className="btn_primary w-full py-1">Add to cart</button>
     </div>
   );
 };

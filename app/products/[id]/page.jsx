@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { getProductById } from "@/utils/products";
+import CartButton from "@/components/CartButton";
 
 const ProductDetails = async ({ params }) => {
   const product = await getProductById(params.id);
@@ -25,7 +26,7 @@ const ProductDetails = async ({ params }) => {
             <p>{product.reviews} reviews</p>
             <p className="text-lg font-semibold">₹{product.price}</p>
           </div>
-          <div className="flex flex-col gap-2 mt-6">
+          <div className="flex flex-col gap-4 mt-6">
             <p>
               <span className="font-semibold">Availability: </span>
               {product.in_stock ? "In stock" : "Out of stock"}
@@ -42,10 +43,8 @@ const ProductDetails = async ({ params }) => {
               <span className="font-semibold">Delivery:</span> in{" "}
               {product.delivery_time} days
             </p>
+            <CartButton item={product} />
           </div>
-          <button className="btn_primary mt-6 py-2 px-6 w-full ">
-            Add to cart
-          </button>
         </div>
       </div>
     </section>

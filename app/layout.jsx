@@ -1,6 +1,7 @@
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import AuthProvider from "@/components/AuthProvider";
+import CartProvider from "@/components/CartProvider";
 
 export const metadata = {
   title: "Trendify",
@@ -13,8 +14,10 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
         <AuthProvider>
-          <Navbar />
-          <main className="px-4 lg:px-16">{children}</main>
+          <CartProvider>
+            <Navbar />
+            <main className="px-4 lg:px-16">{children}</main>
+          </CartProvider>
         </AuthProvider>
       </body>
     </html>

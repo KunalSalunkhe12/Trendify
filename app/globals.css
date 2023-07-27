@@ -14,4 +14,8 @@
   .btn_primary {
     @apply bg-primary text-white rounded-md font-medium hover:bg-white hover:text_gradient border-2 border-primary duration-300 ease-in-out;
   }
+
+  .border_gradient {
+    @apply bg-clip-border bg-gradient-to-r from-primary to-secondary;
+  }
 }

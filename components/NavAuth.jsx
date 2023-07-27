@@ -54,8 +54,8 @@ const NavAuth = () => {
       <li className="p-1">
         <Link href="/cart" className="flex gap-2">
           <BsFillCartFill size={20} />
-          {isClient && Object.keys(state.products).length > 0 && (
-            <span>{Object.keys(state.products).length}</span>
+          {Object.keys(state.products).length > 0 && (
+            <span>{isClient ? Object.keys(state.products).length : ""}</span>
           )}
         </Link>
       </li>

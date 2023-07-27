@@ -32,14 +32,12 @@ const CartButton = ({ item }) => {
   };
 
   return item?.in_stock ? (
-    state.products[item._id] ? (
+    isClient && state.products[item._id] ? (
       <div className="flex justify-between text-base md:text-lg bg-primary px-3 py-1 rounded-lg font-semibold">
         <button className="text-white" onClick={handleRemoveFromCart}>
           -
         </button>
-        <p className="text-white">
-          {isClient ? state.products[item._id].quantity : ""}
-        </p>
+        <p className="text-white">{state.products[item._id].quantity}</p>
         <button className="text-white" onClick={handleAddToCart}>
           +
         </button>

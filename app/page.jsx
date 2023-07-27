@@ -22,7 +22,6 @@ export default function Home() {
         className="-z-10 bottom-0 right-0 absolute md:w-1/2"
         alt="Women holding shopping bag"
         priority={true}
-        quality={100}
       />
     </section>
   );

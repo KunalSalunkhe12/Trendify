@@ -12,7 +12,6 @@ const ProductCard = ({ product }) => {
             className="object-cover"
             src={product?.image}
             fill
-            quality={100}
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             alt="product image"
           />

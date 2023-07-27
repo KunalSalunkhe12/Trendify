@@ -5,7 +5,7 @@ import CartButton from "@/components/CartButton";
 const ProductDetails = async ({ params }) => {
   const product = await getProductById(params.id);
 
-  if (product.error) {
+  if (product?.error) {
     throw new Error(product.error);
   }
 

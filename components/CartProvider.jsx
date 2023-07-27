@@ -8,15 +8,21 @@ export const CartContext = createContext(null);
 
 const CartProvider = ({ children }) => {
   const initialData = { products: {} };
-  const isClient = typeof window !== "undefined"; // Check if we are on the client side
+  const isClient = typeof window !== "undefined";
   const localData = isClient ? localStorage.getItem("cart") : null;
-  const initialSate = localData ? JSON.parse(localData) : initialData;
-
-  const [state, dispatch] = useReducer(cartReducer, initialSate);
+  const initialState = localData ? JSON.parse(localData) : initialData;
+  const [state, dispatch] = useReducer(cartReducer, initialState);
 
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(state));
   }, [state]);
+
+  useEffect(() => {
+    dispatch({
+      type: "INITIALIZE_CART",
+      cart: initialState,
+    });
+  }, []);
 
   const addToCart = (item) => {
     dispatch({

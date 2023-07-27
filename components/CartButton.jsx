@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { signIn, useSession } from "next-auth/react";
 import { useContext } from "react";
 import { CartContext } from "./CartProvider";
@@ -8,8 +8,12 @@ import { CartContext } from "./CartProvider";
 const CartButton = ({ item }) => {
   const { data: session } = useSession();
   const isAuth = session?.user;
-
   const { state, addToCart, removeFromCart } = useContext(CartContext);
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   const handleAddToCart = () => {
     if (isAuth) {
@@ -27,13 +31,15 @@ const CartButton = ({ item }) => {
     }
   };
 
-  return item.in_stock ? (
+  return item?.in_stock ? (
     state.products[item._id] ? (
       <div className="flex justify-between text-base md:text-lg bg-primary px-3 py-1 rounded-lg font-semibold">
         <button className="text-white" onClick={handleRemoveFromCart}>
           -
         </button>
-        <p className="text-white">{state.products[item._id].quantity}</p>
+        <p className="text-white">
+          {isClient ? state.products[item._id].quantity : ""}
+        </p>
         <button className="text-white" onClick={handleAddToCart}>
           +
         </button>

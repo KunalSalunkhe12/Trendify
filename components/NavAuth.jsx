@@ -5,10 +5,18 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { BsFillCartFill } from "react-icons/bs";
+import { CartContext } from "./CartProvider";
+import { useContext } from "react";
 
 const NavAuth = () => {
   const { data: session } = useSession();
   const [showProfile, setShowProfile] = useState(false);
+  const { state } = useContext(CartContext);
+  const [isClient, setIsClient] = useState(false);
+
+  useState(() => {
+    setIsClient(true);
+  }, []);
 
   const handleProfile = () => {
     setShowProfile(!showProfile);
@@ -39,13 +47,16 @@ const NavAuth = () => {
             className="cursor-pointer text-left"
             onClick={() => signOut()}
           >
-            Logout
+            Sign Out
           </button>
         </div>
       </li>
       <li className="p-1">
-        <Link href="cart">
+        <Link href="/cart" className="flex gap-2">
           <BsFillCartFill size={20} />
+          {isClient && Object.keys(state.products).length > 0 && (
+            <span>{Object.keys(state.products).length}</span>
+          )}
         </Link>
       </li>
     </>
@@ -54,7 +65,7 @@ const NavAuth = () => {
       className="border-2 py-1 px-3 rounded-lg hover:bg-white hover:text-black transition duration-300"
       onClick={() => signIn("google")}
     >
-      Login
+      Sign In
     </button>
   );
 };

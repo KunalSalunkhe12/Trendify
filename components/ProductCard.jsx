@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { AiFillStar } from "react-icons/ai";
-import CartButton from "./CartButton";
 
 const ProductCard = ({ product }) => {
   return (
@@ -17,16 +16,16 @@ const ProductCard = ({ product }) => {
           />
         </div>
         <div className="p-2">
-          <h3 className="font-semibold">{product.title}</h3>
+          <h3 className="font-semibold">{product?.title}</h3>
           <div className="flex justify-between my-2">
             <p className="flex items-center">
-              <AiFillStar className="text-secondary" /> {product.rating}
+              <AiFillStar className="text-secondary" /> {product?.rating}
             </p>
-            <p className="font-medium">₹{product.price}</p>
+            <p className="font-medium">₹{product?.price}</p>
           </div>
           <p>
             <span className="text-sm font-medium">Category: </span>
-            {product.category}
+            {product?.category}
           </p>
         </div>
       </Link>

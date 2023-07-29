@@ -42,7 +42,9 @@ const NavAuth = () => {
           }
         >
           <p className="text_gradient font-semibold">{session?.user.name}</p>
-          <Link href="/profile">Profile</Link>
+          <Link onClick={handleProfile} href="/profile">
+            Profile
+          </Link>
           <button
             className="cursor-pointer text-left"
             onClick={() => signOut()}

@@ -33,7 +33,7 @@ const CartButton = ({ item }) => {
 
   return item?.in_stock ? (
     isClient && state.products[item._id] ? (
-      <div className="flex justify-between text-base md:text-lg bg-primary px-3 py-1 rounded-lg font-semibold">
+      <div className="flex justify-between text-base md:text-lg bg-primary px-3 py-2 rounded-lg font-semibold">
         <button className="text-white" onClick={handleRemoveFromCart}>
           -
         </button>

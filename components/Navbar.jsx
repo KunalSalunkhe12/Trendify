@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { BsFillCartFill } from "react-icons/bs";
 import NavAuth from "@/components/NavAuth";
 
 const Navbar = () => {

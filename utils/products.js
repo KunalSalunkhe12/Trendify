@@ -19,7 +19,7 @@ export async function getProductById(id) {
     try {
         await connectDB()
         const product = await Product.findOne({ _id: id })
-        return product
+        return product;
 
     } catch (error) {
         return { error: 'Internal Server Error' }

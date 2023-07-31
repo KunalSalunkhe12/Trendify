@@ -1,13 +1,16 @@
 "use client";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
-const AddressForm = () => {
+const AddressForm = ({ userEmail }) => {
+  const router = useRouter();
   const [address, setAddress] = useState({
     pincode: "",
     city: "",
     locality: "",
     state: "",
   });
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     setAddress({
@@ -16,8 +19,26 @@ const AddressForm = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
+    setLoading(true);
     e.preventDefault();
+    try {
+      const response = await fetch("/api/user", {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ userEmail, addressData: address }),
+      });
+
+      const data = await response.json();
+
+      if (data.status === 200) router.refresh();
+    } catch (error) {
+      throw new Error(error.error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -81,7 +102,8 @@ const AddressForm = () => {
           <input
             className="btn_primary p-2 cursor-pointer"
             type="submit"
-            value="Submit"
+            value={loading ? "Adding..." : "Add Address"}
+            disabled={loading}
           />
         </div>
       </form>

@@ -9,6 +9,7 @@ const Profile = async () => {
   const session = await getServerSession(authOptions);
 
   const user = await getUser(session?.user.email);
+
   if (user.error) {
     throw new Error(user.error);
   }
@@ -27,11 +28,11 @@ const Profile = async () => {
       {user.address.pincode ? (
         <h2>
           <span className="font-semibold">Address: </span>
-          {(user?.address, user?.city, user?.state, user?.zip)}
+          {`${user.address.locality}, ${user.address.city}, ${user.address.state} - ${user.address.pincode}`}
         </h2>
       ) : (
         <div>
-          <AddressForm />
+          <AddressForm userEmail={user.email} />
         </div>
       )}
     </div>
